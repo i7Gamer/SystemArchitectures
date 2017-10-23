@@ -4,10 +4,7 @@ import pmp.filter.DataTransformationFilter1;
 import pmp.interfaces.Readable;
 import pmp.interfaces.Writeable;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.InputStreamReader;
 import java.security.InvalidParameterException;
 import java.util.Collection;
 import java.util.List;
@@ -26,7 +23,9 @@ public class FrequentWordsRemover extends DataTransformationFilter1<List<List<St
     @Override
     protected void process(List<List<String>> entity) {
         for(List<String> list : entity){
-            list.get(0);
+            if(frequentWords.contains(list.get(0))){
+                entity.remove(list);
+            }
         }
     }
 }
