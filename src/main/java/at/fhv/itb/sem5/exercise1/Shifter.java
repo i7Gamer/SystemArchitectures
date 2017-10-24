@@ -1,5 +1,6 @@
 package at.fhv.itb.sem5.exercise1;
 
+import javafx.util.Pair;
 import pmp.filter.DataTransformationFilter3;
 import pmp.interfaces.Readable;
 import pmp.interfaces.Writeable;
@@ -11,24 +12,23 @@ import java.util.LinkedList;
 /**
  * Created by timorzipa on 23.10.17.
  */
-public class Shifter extends DataTransformationFilter3<LinkedList<String>,LinkedList<String>> {
+public class Shifter extends DataTransformationFilter3<Pair<LinkedList<String>,Long>, Pair<LinkedList<String>,Long>> {
 
-    public Shifter(Readable<LinkedList<String>> input, Writeable<LinkedList<String>> output) throws InvalidParameterException {
+    public Shifter(Readable<Pair<LinkedList<String>, Long>> input, Writeable<Pair<LinkedList<String>, Long>> output) throws InvalidParameterException {
         super(input, output);
     }
 
     @Override
-    protected ArrayList<LinkedList<String>> process(LinkedList<String> entity) {
+    protected ArrayList<Pair<LinkedList<String>, Long>> process(Pair<LinkedList<String>, Long> entity) {
+        ArrayList<Pair<LinkedList<String>,Long>> array = new ArrayList<>();
 
-        ArrayList<LinkedList<String>> array = new ArrayList<>();
+        for(int i = 0; i < entity.getKey().size(); i++){
 
-        for(int i = 0; i < entity.size(); i++){
-
-            LinkedList<String> copy = new LinkedList<>(entity);
+            Pair<LinkedList<String>,Long> copy = new Pair<>(entity.getKey(),entity.getValue());
             array.add(copy);
 
-            String s = entity.removeFirst();
-            entity.addLast(s);
+            String s = entity.getKey().removeFirst();
+            entity.getKey().addLast(s);
         }
 
         return array;

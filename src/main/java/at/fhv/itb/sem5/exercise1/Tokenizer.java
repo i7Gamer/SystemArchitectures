@@ -1,5 +1,6 @@
 package at.fhv.itb.sem5.exercise1;
 
+import javafx.util.Pair;
 import pmp.filter.DataTransformationFilter2;
 import pmp.interfaces.Readable;
 import pmp.interfaces.Writeable;
@@ -11,14 +12,17 @@ import java.util.LinkedList;
 /**
  * Created by timorzipa on 23.10.17.
  */
-public class Tokenizer extends DataTransformationFilter2<String, LinkedList<String>> {
+public class Tokenizer extends DataTransformationFilter2<Pair<String,Long>, Pair<LinkedList<String>,Long>> {
 
-    public Tokenizer(Readable<String> input, Writeable<LinkedList<String>> output) throws InvalidParameterException {
+    public Tokenizer(Readable<Pair<String, Long>> input, Writeable<Pair<LinkedList<String>, Long>> output) throws InvalidParameterException {
         super(input, output);
     }
 
+
     @Override
-    protected LinkedList<String> process(String entity) {
-        return new LinkedList(Arrays.asList(entity.trim().split("\\s")));
+    protected Pair<LinkedList<String>, Long> process(Pair<String, Long> entity) {
+        return new Pair<>(new LinkedList(Arrays.asList(entity.getKey().trim().split("\\s"))), entity.getValue());
     }
+
+
 }
