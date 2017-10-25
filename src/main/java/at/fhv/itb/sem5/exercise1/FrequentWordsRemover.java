@@ -9,21 +9,30 @@ import java.io.FileNotFoundException;
 import java.security.InvalidParameterException;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
-/**
- * Created by timorzipa on 23.10.17.
- */
 public class FrequentWordsRemover extends DataTransformationFilter1<Pair<List<List<String>>,Long>>{
-    private Collection<String> frequentWords;
+    private Set<String> frequentWords;
 
     public FrequentWordsRemover(Readable<Pair<List<List<String>>, Long>> input, Writeable<Pair<List<List<String>>, Long>> output) throws InvalidParameterException {
         super(input, output);
-        this.frequentWords = frequentWords;
+    }
+
+    public FrequentWordsRemover(Readable<Pair<List<List<String>>, Long>> input) throws InvalidParameterException {
+        super(input);
+    }
+
+    public FrequentWordsRemover(Writeable<Pair<List<List<String>>, Long>> output) throws InvalidParameterException {
+        super(output);
     }
 
     @Override
     protected void process(Pair<List<List<String>>,Long> entity) {
         entity.getKey().removeIf(c -> frequentWords.contains(c.get(0)));
+    }
+
+    public void setFrequentWords(Set<String> frequentWords) {
+        this.frequentWords = frequentWords;
     }
 }
