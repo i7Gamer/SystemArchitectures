@@ -50,11 +50,14 @@ public class Line implements Comparable<Line>{
 
     @Override
     public int compareTo(Line o) {
+
+
         String word1 = words.getFirst();
         String word2 = o.words.getFirst();
 
-        int wordComparison = word1.compareToIgnoreCase(word2);
-        return wordComparison == 0 ? index.compareTo(o.index) : wordComparison;
+        return word1.compareToIgnoreCase(word2);
+//        int wordComparison = word1.compareToIgnoreCase(word2);
+//        return wordComparison == 0 ? index.compareTo(o.index) : wordComparison;
     }
 
     public String toString(){

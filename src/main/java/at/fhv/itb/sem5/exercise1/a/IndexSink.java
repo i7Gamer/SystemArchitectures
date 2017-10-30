@@ -33,6 +33,7 @@ public class IndexSink extends Sink<Collection<Line>> {
                 writer.write(l.toString());
                 writer.newLine();
             }
+            writer.flush();
         } catch (IOException e) {
             throw new StreamCorruptedException(e.getMessage());
         }

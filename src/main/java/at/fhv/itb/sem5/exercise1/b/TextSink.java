@@ -37,6 +37,7 @@ public class TextSink extends Sink<Line> {
         try {
             writer.write(value.asString(limit, alignment));
             writer.newLine();
+            writer.flush();
         } catch (IOException e) {
             throw new StreamCorruptedException(e.getMessage());
         }
