@@ -12,12 +12,11 @@ import java.util.LinkedList;
 
 import javax.media.jai.PlanarImage;
 
-import dataContainers.Coordinate;
-import pimpMyPipe.filter.DataEnrichmentFilter;
-import pimpMyPipe.interfaces.Readable;
-import pimpMyPipe.interfaces.Writeable;
+import pmp.filter.DataCompositionFilter;
+import pmp.interfaces.Writeable;
+import pmp.interfaces.Readable;
 
-public class CalcCentroidsFilter extends DataEnrichmentFilter<PlanarImage, LinkedList<Coordinate>>{
+public class CalcCentroidsFilter extends DataCompositionFilter<PlanarImage, LinkedList<Coordinate>> {
 
 	private HashMap<Coordinate, Boolean> _general = new HashMap<Coordinate, Boolean>();
 	private LinkedList<LinkedList<Coordinate>> _figures = new LinkedList<LinkedList<Coordinate>>();

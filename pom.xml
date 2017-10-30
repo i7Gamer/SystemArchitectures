@@ -67,36 +67,35 @@
       <artifactId>guava</artifactId>
       <version>23.2-jre</version>
     </dependency>
-  <dependency>
-    <groupId>javax.media</groupId>
-    <artifactId>jai_core</artifactId>
-    <version>1.1.3</version>
-    <type>pom</type>
-  </dependency>
-  <dependency>
-    <groupId>com.sun.media</groupId>
-    <artifactId>jai_codec</artifactId>
-    <version>1.1.2_01</version>
-    <type>pom</type>
-    <exclusions>
-      <exclusion>
-        <groupId>javax.media</groupId>
-        <artifactId>jai_core</artifactId>
-      </exclusion>
-    </exclusions>
-  </dependency>
-  <dependency>
-    <groupId>com.sun.media</groupId>
-    <artifactId>jai_imageio</artifactId>
-    <version>1.1</version>
-    <type>pom</type>
-    <exclusions>
-      <exclusion>
-        <groupId>javax.media</groupId>
-        <artifactId>jai_core</artifactId>
-      </exclusion>
-    </exclusions>
-  </dependency>
-</dependencies>
-
+    <dependency>
+      <groupId>javax.media</groupId>
+      <artifactId>jai_core</artifactId>
+      <version>1.1.3</version>
+      <type>pom</type>
+    </dependency>
+    <dependency>
+      <groupId>com.sun.media</groupId>
+      <artifactId>jai_codec</artifactId>
+      <version>1.1.2_01</version>
+      <type>pom</type>
+      <exclusions>
+        <exclusion>
+          <groupId>javax.media</groupId>
+          <artifactId>jai_core</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>com.sun.media</groupId>
+      <artifactId>jai_imageio</artifactId>
+      <version>1.1</version>
+      <type>pom</type>
+      <exclusions>
+        <exclusion>
+          <groupId>javax.media</groupId>
+          <artifactId>jai_core</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+  </dependencies>
 </project>
