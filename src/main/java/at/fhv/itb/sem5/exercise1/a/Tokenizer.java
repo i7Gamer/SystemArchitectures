@@ -12,8 +12,6 @@ import java.security.InvalidParameterException;
  */
 public class Tokenizer extends DataTransformationFilter2<Pair<String, Long>, Line> {
 
-    private String splitRegex = "\\s";
-
     public Tokenizer(Readable<Pair<String, Long>> input, Writeable<Line> output) throws InvalidParameterException {
         super(input, output);
     }
@@ -30,14 +28,9 @@ public class Tokenizer extends DataTransformationFilter2<Pair<String, Long>, Lin
     protected Line process(Pair<String, Long> entity) {
         Line l = new Line();
         l.index = entity.getValue();
-        for(String s : entity.getKey().trim().split(splitRegex))
-        {
+        for (String s : entity.getKey().trim().split("\\s")) {
             l.append(s);
         }
         return l;
-    }
-
-    public void setSplitRegex(String splitRegex) {
-        this.splitRegex = splitRegex;
     }
 }
