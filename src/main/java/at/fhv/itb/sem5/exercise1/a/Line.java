@@ -2,10 +2,7 @@ package at.fhv.itb.sem5.exercise1.a;
 
 import java.util.LinkedList;
 
-/**
- * Created by timor on 29.10.2017.
- */
-public class Line implements Comparable<Line>{
+public class Line implements Comparable<Line> {
 
     public Long getIndex() {
         return index;
@@ -19,20 +16,19 @@ public class Line implements Comparable<Line>{
     protected LinkedList<String> words = new LinkedList<>();
 
     public void append(String s) {
-        if(s == null || s.isEmpty()) {
+        if (s == null || s.isEmpty()) {
             return;
         }
 
         words.add(s);
     }
 
-    public int getLength(){
+    public int getLength() {
         int count = 0;
 
-        for(String s : words)
-        {
+        for (String s : words) {
             count++;
-            count+=s.length();
+            count += s.length();
         }
 
         return count;
@@ -60,7 +56,7 @@ public class Line implements Comparable<Line>{
 //        return wordComparison == 0 ? index.compareTo(o.index) : wordComparison;
     }
 
-    public String toString(){
+    public String toString() {
         StringBuilder contentBuilder = new StringBuilder();
         for (String s : words) {
             contentBuilder.append(s);
@@ -71,11 +67,11 @@ public class Line implements Comparable<Line>{
         return content + " " + index;
     }
 
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return words.isEmpty();
     }
 
-    public String asString(int lengthLimit, Alignment alignment){
+    public String asString(int lengthLimit, Alignment alignment) {
         StringBuilder contentBuilder = new StringBuilder();
         for (String s : words) {
             contentBuilder.append(s);
@@ -88,19 +84,17 @@ public class Line implements Comparable<Line>{
         StringBuilder before = new StringBuilder();
         StringBuilder after = new StringBuilder();
 
-        if(alignment == Alignment.LEFT) {
-            for(int i = 0; i < filler; i++){
+        if (alignment == Alignment.LEFT) {
+            for (int i = 0; i < filler; i++) {
                 after.append(" ");
             }
-        }
-        else if(alignment == Alignment.CENTER){
-            for(int i = 0; i < filler/2; i++){
+        } else if (alignment == Alignment.CENTER) {
+            for (int i = 0; i < filler / 2; i++) {
                 before.append(" ");
                 after.append(" ");
             }
-        }
-        else if(alignment == Alignment.RIGHT){
-            for(int i = 0; i < filler; i++){
+        } else if (alignment == Alignment.RIGHT) {
+            for (int i = 0; i < filler; i++) {
                 before.append(" ");
             }
         }

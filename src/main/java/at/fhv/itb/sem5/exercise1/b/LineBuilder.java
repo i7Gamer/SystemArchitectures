@@ -8,9 +8,6 @@ import pmp.interfaces.Writeable;
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
 
-/**
- * Created by timor on 29.10.2017.
- */
 public class LineBuilder extends DataCompositionFilter<ArrayList<Character>, Line> {
 
     Long lineCounter = 0L;
@@ -34,23 +31,22 @@ public class LineBuilder extends DataCompositionFilter<ArrayList<Character>, Lin
 
     @Override
     protected boolean fillEntity(ArrayList<Character> nextVal, Line entity) {
-        if(nextVal == null){
+        if (nextVal == null) {
             return true;
         }
 
         StringBuilder wordBuilder = new StringBuilder();
 
-        for(Character c : nextVal){
+        for (Character c : nextVal) {
             wordBuilder.append(c);
         }
 
         String word = wordBuilder.toString();
 
-        if(entity.getLength() + word.length() > maxLength){
+        if (entity.getLength() + word.length() > maxLength) {
             temp = word;
             return true;
-        }
-        else{
+        } else {
             entity.append(word);
             return false;
         }
@@ -59,8 +55,7 @@ public class LineBuilder extends DataCompositionFilter<ArrayList<Character>, Lin
     @Override
     protected Line getNewEntityObject() {
         Line alignedLine = new Line();
-        if(temp != null)
-        {
+        if (temp != null) {
             alignedLine.append(temp);
             temp = null;
         }

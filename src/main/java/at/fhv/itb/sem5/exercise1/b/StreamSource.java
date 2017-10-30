@@ -6,9 +6,6 @@ import pmp.interfaces.Writeable;
 import java.io.*;
 import java.security.InvalidParameterException;
 
-/**
- * Created by timor on 29.10.2017.
- */
 public class StreamSource extends Source<Character> {
 
     BufferedReader bufferedReader;
@@ -27,7 +24,7 @@ public class StreamSource extends Source<Character> {
     public Character read() throws StreamCorruptedException {
         try {
             int character = bufferedReader.read();
-            if(character == -1){
+            if (character == -1) {
                 return null;
             }
             return (char) character;

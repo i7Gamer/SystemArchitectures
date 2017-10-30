@@ -8,9 +8,6 @@ import pmp.interfaces.Readable;
 import java.io.*;
 import java.security.InvalidParameterException;
 
-/**
- * Created by timor on 29.10.2017.
- */
 public class TextSink extends Sink<Line> {
 
     private BufferedWriter writer;
