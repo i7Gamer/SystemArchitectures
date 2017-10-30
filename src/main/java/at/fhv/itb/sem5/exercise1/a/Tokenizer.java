@@ -7,9 +7,6 @@ import pmp.interfaces.Writeable;
 
 import java.security.InvalidParameterException;
 
-/**
- * Created by timorzipa on 23.10.17.
- */
 public class Tokenizer extends DataTransformationFilter2<Pair<String, Long>, Line> {
 
     private String splitRegex = "\\s";
@@ -30,8 +27,7 @@ public class Tokenizer extends DataTransformationFilter2<Pair<String, Long>, Lin
     protected Line process(Pair<String, Long> entity) {
         Line l = new Line();
         l.index = entity.getValue();
-        for(String s : entity.getKey().trim().split(splitRegex))
-        {
+        for (String s : entity.getKey().trim().split(splitRegex)) {
             l.append(s);
         }
         return l;

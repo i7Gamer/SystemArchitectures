@@ -5,7 +5,8 @@ import pmp.interfaces.Readable;
 import pmp.interfaces.Writeable;
 
 import java.security.InvalidParameterException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AlphabeticalSorter extends DataCompositionFilter<Line, List<Line>> {
 
@@ -23,8 +24,7 @@ public class AlphabeticalSorter extends DataCompositionFilter<Line, List<Line>> 
 
     @Override
     protected boolean fillEntity(Line nextVal, List<Line> entity) {
-        if(nextVal == null)
-        {
+        if (nextVal == null) {
             entity.sort(Line::compareTo);
             return true;
         }

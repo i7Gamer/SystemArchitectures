@@ -28,8 +28,8 @@ public class IndexSink extends Sink<Collection<Line>> {
     public void write(Collection<Line> value) throws StreamCorruptedException {
         if (value == null) return;
         try {
-            for(Line l : value) {
-                if(l.isEmpty() && skipEmptyLines) continue;
+            for (Line l : value) {
+                if (l.isEmpty() && skipEmptyLines) continue;
                 writer.write(l.toString());
                 writer.newLine();
             }
