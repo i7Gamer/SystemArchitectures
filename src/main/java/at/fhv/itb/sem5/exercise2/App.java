@@ -1,64 +1,95 @@
 package at.fhv.itb.sem5.exercise2;
 
-import at.fhv.itb.sem5.exercise1.a.*;
-import at.fhv.itb.sem5.exercise1.b.*;
 import calccentroidsfilter.CalcCentroidsFilter;
-import com.sun.media.jai.widget.DisplayJAI;
-import com.sun.org.apache.regexp.internal.RE;
-import javafx.print.PageLayout;
+import calccentroidsfilter.Coordinate;
 import pmp.interfaces.Readable;
-import pmp.interfaces.Writeable;
 
-import javax.media.jai.JAI;
-import javax.media.jai.KernelJAI;
 import javax.media.jai.PlanarImage;
 import javax.media.jai.operator.MedianFilterDescriptor;
 import javax.media.jai.operator.MedianFilterShape;
-import javax.print.attribute.standard.Media;
-import javax.swing.*;
 import java.awt.*;
-import java.awt.image.Raster;
-import java.awt.image.RenderedImage;
-import java.awt.image.renderable.ParameterBlock;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.HashSet;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-import static com.sun.tools.doclint.Entity.image;
-
 public class App {
 
+    private static String fileName;
+    private static String outputName;
+    private static String outputName2;
+    private static double[] low;
+    private static double[] high;
+    private static double[] constant;
+    private static List<Coordinate> expected;
+    private static float[] kernelMatrix;
+    private static MedianFilterShape medianFilterShape;
+    private static int medianFilterSize;
+    private static int toleranceX;
+    private static int toleranceY;
+    private static Rectangle rectangle;
+    private static int x = 0;
+    private static int y = 40;
+    private static int width = 448;
+    private static int height = 110 - y;
+
     public static void main(String[] args) throws IOException {
+        initData();
 
-        String fileName = "aufgabe2/loetstellen.JPG";
-        String outputName = "aufgabe2/LoetstellenFiltered.png";
-        String outputName2 = "aufgabe2/QualityInfo.txt";
+        Scanner s = new Scanner(System.in);
 
-        double[] low = new double[] { 0 };
-        double[] high = new double[] { 30 };
-        double[] constant = new double[] { 255 };
+        System.out.println("1 - push | 2 - pull | anything else to exit");
 
-        float[] kernelMatrix = new float[] {1, 1, 1, 1, 1,
+        String input = s.next();
+
+        if ("1".equals(input)) {
+            doPush();
+        } else if ("2".equals(input)) {
+            doPull();
+        }
+        s.close();
+        System.out.println("finished");
+    }
+
+
+    public static void initData() {
+        fileName = "aufgabe2/loetstellen.JPG";
+        outputName = "aufgabe2/LoetstellenFiltered.png";
+        outputName2 = "aufgabe2/QualityInfo.txt";
+
+        low = new double[]{0};
+        high = new double[]{30};
+        constant = new double[]{255};
+
+        expected = Arrays.asList(new Coordinate(73, 77),
+                new Coordinate(110, 80),
+                new Coordinate(202, 80),
+                new Coordinate(265, 79),
+                new Coordinate(330, 81),
+                new Coordinate(396, 81));
+
+
+        kernelMatrix = new float[]{1, 1, 1, 1, 1,
                 1, 1, 1, 1, 1,
                 1, 1, 1, 1, 1,
                 1, 1, 1, 1, 1,
                 1, 1, 1, 1, 1};
 
-        MedianFilterShape medianFilterShape = MedianFilterDescriptor.MEDIAN_MASK_SQUARE;
-        int medianFilterSize = 7;
+        medianFilterShape = MedianFilterDescriptor.MEDIAN_MASK_SQUARE;
+        medianFilterSize = 7;
 
-        int x = 0;
-        int y = 40;
-        int width = 448;
-        int height = 110 - y;
+        toleranceX = 2;
+        toleranceY = 2;
 
-        Rectangle rectangle = new Rectangle(x, y, width, height);
+        x = 0;
+        y = 40;
+        width = 448;
+        height = 110 - y;
 
+        rectangle = new Rectangle(x, y, width, height);
+    }
 
+    private static void doPush() {
         ImageSource source = new ImageSource("fileload",fileName);
 
         ROIFilter roiFilter = new ROIFilter(source, rectangle);
@@ -81,9 +112,24 @@ public class App {
 
         SaveFilter saveFilter = new SaveFilter((Readable<PlanarImage>) imageViewer3, outputName);
 
-        CalcCentroidsFilter calcCentroidsFilter = new CalcCentroidsFilter((Readable<PlanarImage>) saveFilter, x, y);
+        CalcCentroidsFilter calcCentroidsFilter = new CalcCentroidsFilter(saveFilter, x, y);
 
-        QualityCheckFilter qualityCheckFilter = new QualityCheckFilter(calcCentroidsFilter, 0,0, outputName2);
+        QualityCheckFilter qualityCheckFilter = new QualityCheckFilter(calcCentroidsFilter, outputName2, expected, toleranceX, toleranceY);
+
+        qualityCheckFilter.run();
+    }
+
+    private static void doPull() {
+        QualityCheckFilter qualityCheckFilter =
+                new QualityCheckFilter(
+                        new CalcCentroidsFilter(new SaveFilter((Readable<PlanarImage>)
+                                new ImageViewer((Readable<PlanarImage>)
+                                        new OpeningFilter((Readable<PlanarImage>)
+                                                new ImageViewer((Readable<PlanarImage>)
+                                                        new MedianFilter((Readable<PlanarImage>)
+                                                                new ImageViewer((Readable<PlanarImage>)
+                                                                        new ThresholdFilter((Readable<PlanarImage>)
+                                                                                new ROIFilter(new ImageSource("fileload", fileName), rectangle), low, high, constant)), medianFilterShape, medianFilterSize)), kernelMatrix, 2)), outputName), x, y), outputName2, expected, toleranceX, toleranceY);
 
         qualityCheckFilter.run();
     }
