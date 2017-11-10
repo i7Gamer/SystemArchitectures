@@ -3,6 +3,7 @@ package at.fhv.itb.sem5.exercise2;
 import calccentroidsfilter.CalcCentroidsFilter;
 import calccentroidsfilter.Coordinate;
 import pmp.interfaces.Readable;
+import pmp.interfaces.Writeable;
 
 import javax.media.jai.PlanarImage;
 import javax.media.jai.operator.MedianFilterDescriptor;
@@ -90,46 +91,86 @@ public class App {
     }
 
     private static void doPush() {
-        ImageSource source = new ImageSource("fileload",fileName);
+        ImageSource source = new ImageSource(
+                "fileload",
+                fileName,
+                (Writeable<PlanarImage>) new ROIFilter(
+                        rectangle,
+                        (Writeable<PlanarImage>) new ThresholdFilter(
+                                low,
+                                high,
+                                constant,
+                                (Writeable<PlanarImage>) new ImageViewer(
+                                        (Writeable<PlanarImage>) new MedianFilter(
+                                                medianFilterShape,
+                                                medianFilterSize,
+                                                (Writeable<PlanarImage>) new ImageViewer(
+                                                        (Writeable<PlanarImage>) new OpeningFilter(
+                                                                kernelMatrix,
+                                                                2,
+                                                                (Writeable<PlanarImage>) new ImageViewer(
+                                                                        (Writeable<PlanarImage>) new SaveFilter(
+                                                                                outputName,
+                                                                                new CalcCentroidsFilter(
+                                                                                        x,
+                                                                                        y,
+                                                                                        new QualityCheckFilter(
+                                                                                                outputName2, expected, toleranceX, toleranceY
+                                                                                        )
+                                                                                )
+                                                                        )
+                                                                )
+                                                        )
+                                                )
+                                        )
+                                )
+                        )
+                )
+        );
 
-        ROIFilter roiFilter = new ROIFilter(source, rectangle);
-
-        ThresholdFilter thresholdFilter = new ThresholdFilter((Readable<PlanarImage>) roiFilter, low, high, constant);
-
-        ImageViewer imageViewer = new ImageViewer((Readable<PlanarImage>) thresholdFilter);
-
-        MedianFilter medianFilter = new MedianFilter((Readable<PlanarImage>) imageViewer, medianFilterShape, medianFilterSize);
-
-        ImageViewer imageViewer2 = new ImageViewer((Readable<PlanarImage>) medianFilter);
-
-        OpeningFilter openingFilter = new OpeningFilter((Readable<PlanarImage>) imageViewer2, kernelMatrix, 2);
-
-        ImageViewer imageViewer3 = new ImageViewer((Readable<PlanarImage>) openingFilter);
-
-        //ClosingFilter closingFilter = new ClosingFilter((Readable<PlanarImage>) imageViewer3, kernelMatrix, 2);
-
-        //ImageViewer imageViewer4 = new ImageViewer((Readable<PlanarImage>) closingFilter);
-
-        SaveFilter saveFilter = new SaveFilter((Readable<PlanarImage>) imageViewer3, outputName);
-
-        CalcCentroidsFilter calcCentroidsFilter = new CalcCentroidsFilter(saveFilter, x, y);
-
-        QualityCheckFilter qualityCheckFilter = new QualityCheckFilter(calcCentroidsFilter, outputName2, expected, toleranceX, toleranceY);
-
-        qualityCheckFilter.run();
+        source.run();
     }
 
     private static void doPull() {
-        QualityCheckFilter qualityCheckFilter =
-                new QualityCheckFilter(
-                        new CalcCentroidsFilter(new SaveFilter((Readable<PlanarImage>)
-                                new ImageViewer((Readable<PlanarImage>)
-                                        new OpeningFilter((Readable<PlanarImage>)
-                                                new ImageViewer((Readable<PlanarImage>)
-                                                        new MedianFilter((Readable<PlanarImage>)
-                                                                new ImageViewer((Readable<PlanarImage>)
-                                                                        new ThresholdFilter((Readable<PlanarImage>)
-                                                                                new ROIFilter(new ImageSource("fileload", fileName), rectangle), low, high, constant)), medianFilterShape, medianFilterSize)), kernelMatrix, 2)), outputName), x, y), outputName2, expected, toleranceX, toleranceY);
+        QualityCheckFilter qualityCheckFilter = new QualityCheckFilter(
+                outputName2,
+                expected,
+                toleranceX,
+                toleranceY,
+                new CalcCentroidsFilter(
+                        x,
+                        y,
+                        new SaveFilter(
+                                outputName,
+                                (Readable<PlanarImage>) new ImageViewer(
+                                        (Readable<PlanarImage>) new OpeningFilter(
+                                                kernelMatrix,
+                                                2,
+                                                (Readable<PlanarImage>) new ImageViewer(
+                                                        (Readable<PlanarImage>) new MedianFilter(
+                                                                medianFilterShape,
+                                                                medianFilterSize,
+                                                                (Readable<PlanarImage>) new ImageViewer(
+                                                                        (Readable<PlanarImage>) new ThresholdFilter(
+                                                                                low,
+                                                                                high,
+                                                                                constant,
+                                                                                (Readable<PlanarImage>) new ROIFilter(
+                                                                                        rectangle,
+                                                                                        new ImageSource(
+                                                                                                "fileload",
+                                                                                                fileName
+                                                                                        )
+                                                                                )
+                                                                        )
+                                                                )
+                                                        )
+                                                )
+                                        )
+                                )
+                        )
+                )
+        );
 
         qualityCheckFilter.run();
     }

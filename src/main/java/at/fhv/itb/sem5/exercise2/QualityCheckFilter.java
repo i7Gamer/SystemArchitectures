@@ -20,7 +20,7 @@ public class QualityCheckFilter extends Sink<ArrayList<Coordinate>> {
     private final int toleranceX;
     private final int toleranceY;
 
-    public QualityCheckFilter(int x, int y, String fileName, List<Coordinate> expected, int toleranceX, int toleranceY) throws InvalidParameterException {
+    public QualityCheckFilter(String fileName, List<Coordinate> expected, int toleranceX, int toleranceY) throws InvalidParameterException {
         super();
         this.fileName = fileName;
         this.expected = expected;
@@ -28,7 +28,7 @@ public class QualityCheckFilter extends Sink<ArrayList<Coordinate>> {
         this.toleranceY = toleranceY;
     }
 
-    public QualityCheckFilter(Readable<ArrayList<Coordinate>> input, String fileName, List<Coordinate> expected, int toleranceX, int toleranceY) throws InvalidParameterException {
+    public QualityCheckFilter(String fileName, List<Coordinate> expected, int toleranceX, int toleranceY, Readable<ArrayList<Coordinate>> input) throws InvalidParameterException {
         super(input);
         this.fileName = fileName;
         this.expected = expected;

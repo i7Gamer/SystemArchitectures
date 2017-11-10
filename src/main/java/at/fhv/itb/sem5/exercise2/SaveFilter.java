@@ -14,17 +14,17 @@ public class SaveFilter extends ForwardingFilter<PlanarImage> {
 
     private final String fileName;
 
-    public SaveFilter(Readable<PlanarImage> input, Writeable<PlanarImage> output, String fileName) throws InvalidParameterException {
+    public SaveFilter(String fileName, Readable<PlanarImage> input, Writeable<PlanarImage> output) throws InvalidParameterException {
         super(input, output);
         this.fileName = fileName;
     }
 
-    public SaveFilter(Readable<PlanarImage> input, String fileName) throws InvalidParameterException {
+    public SaveFilter(String fileName, Readable<PlanarImage> input) throws InvalidParameterException {
         super(input);
         this.fileName = fileName;
     }
 
-    public SaveFilter(Writeable<PlanarImage> output, String fileName) throws InvalidParameterException {
+    public SaveFilter(String fileName, Writeable<PlanarImage> output) throws InvalidParameterException {
         super(output);
         this.fileName = fileName;
     }

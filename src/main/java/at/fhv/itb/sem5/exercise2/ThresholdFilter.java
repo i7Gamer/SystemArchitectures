@@ -11,25 +11,25 @@ import java.security.InvalidParameterException;
 
 public class ThresholdFilter extends DataTransformationFilter2<PlanarImage, PlanarImage> {
 
-    double[] low;
-    double[] high;
-    double[] constant;
+    private final double[] low;
+    private final double[] high;
+    private final double[] constant;
 
-    public ThresholdFilter(Readable<PlanarImage> input, Writeable<PlanarImage> output, double[] low, double[] high, double[] constant) throws InvalidParameterException {
+    public ThresholdFilter(double[] low, double[] high, double[] constant, Readable<PlanarImage> input, Writeable<PlanarImage> output) throws InvalidParameterException {
         super(input, output);
         this.low = low;
         this.high = high;
         this.constant = constant;
     }
 
-    public ThresholdFilter(Readable<PlanarImage> input, double[] low, double[] high, double[] constant) throws InvalidParameterException {
+    public ThresholdFilter(double[] low, double[] high, double[] constant, Readable<PlanarImage> input) throws InvalidParameterException {
         super(input);
         this.low = low;
         this.high = high;
         this.constant = constant;
     }
 
-    public ThresholdFilter(Writeable<PlanarImage> output, double[] low, double[] high, double[] constant) throws InvalidParameterException {
+    public ThresholdFilter(double[] low, double[] high, double[] constant, Writeable<PlanarImage> output) throws InvalidParameterException {
         super(output);
         this.low = low;
         this.high = high;

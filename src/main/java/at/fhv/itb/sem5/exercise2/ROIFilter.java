@@ -12,17 +12,17 @@ public class ROIFilter extends DataTransformationFilter2<PlanarImage, PlanarImag
 
     private final Rectangle rectangle;
 
-    public ROIFilter(Readable<PlanarImage> input, Writeable<PlanarImage> output, Rectangle rectangle) throws InvalidParameterException {
+    public ROIFilter(Rectangle rectangle, Readable<PlanarImage> input, Writeable<PlanarImage> output) throws InvalidParameterException {
         super(input, output);
         this.rectangle = rectangle;
     }
 
-    public ROIFilter(Readable<PlanarImage> input, Rectangle rectangle) throws InvalidParameterException {
+    public ROIFilter(Rectangle rectangle, Readable<PlanarImage> input) throws InvalidParameterException {
         super(input);
         this.rectangle = rectangle;
     }
 
-    public ROIFilter(Writeable<PlanarImage> output, Rectangle rectangle) throws InvalidParameterException {
+    public ROIFilter(Rectangle rectangle, Writeable<PlanarImage> output) throws InvalidParameterException {
         super(output);
         this.rectangle = rectangle;
     }

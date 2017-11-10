@@ -5,16 +5,16 @@ package calccentroidsfilter;
  * use this filter adapting eventually the package name
  */
 
+import pmp.filter.DataTransformationFilter2;
 import pmp.interfaces.Readable;
 import pmp.interfaces.Writeable;
-import pmp.filter.DataTransformationFilter2;
 
 import javax.media.jai.PlanarImage;
 import java.awt.image.BufferedImage;
 import java.security.InvalidParameterException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class CalcCentroidsFilter extends DataTransformationFilter2<PlanarImage, ArrayList<Coordinate>> {
@@ -26,19 +26,19 @@ public class CalcCentroidsFilter extends DataTransformationFilter2<PlanarImage, 
     private final int x;
     private final int y;
 
-    public CalcCentroidsFilter(Readable<PlanarImage> input, Writeable<ArrayList<Coordinate>> output, int x, int y) throws InvalidParameterException {
+    public CalcCentroidsFilter(int x, int y, Readable<PlanarImage> input, Writeable<ArrayList<Coordinate>> output) throws InvalidParameterException {
         super(input, output);
         this.x = x;
         this.y = y;
     }
 
-    public CalcCentroidsFilter(Readable<PlanarImage> input, int x, int y) throws InvalidParameterException {
+    public CalcCentroidsFilter(int x, int y, Readable<PlanarImage> input) throws InvalidParameterException {
         super(input);
         this.x = x;
         this.y = y;
     }
 
-    public CalcCentroidsFilter(Writeable<ArrayList<Coordinate>> output, int x, int y) throws InvalidParameterException {
+    public CalcCentroidsFilter(int x, int y, Writeable<ArrayList<Coordinate>> output) throws InvalidParameterException {
         super(output);
         this.x = x;
         this.y = y;

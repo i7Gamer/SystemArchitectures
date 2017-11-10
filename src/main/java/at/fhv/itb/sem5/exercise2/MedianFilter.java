@@ -15,19 +15,19 @@ public class MedianFilter extends DataTransformationFilter2<PlanarImage, PlanarI
     private final int medianFilterSize;
 
 
-    public MedianFilter(Readable<PlanarImage> input, Writeable<PlanarImage> output, MedianFilterShape medianFilterShape, int medianFilterSize) throws InvalidParameterException {
+    public MedianFilter(MedianFilterShape medianFilterShape, int medianFilterSize, Readable<PlanarImage> input, Writeable<PlanarImage> output) throws InvalidParameterException {
         super(input, output);
         this.medianFilterShape = medianFilterShape;
         this.medianFilterSize = medianFilterSize;
     }
 
-    public MedianFilter(Readable<PlanarImage> input, MedianFilterShape medianFilterShape, int medianFilterSize) throws InvalidParameterException {
+    public MedianFilter(MedianFilterShape medianFilterShape, int medianFilterSize, Readable<PlanarImage> input) throws InvalidParameterException {
         super(input);
         this.medianFilterShape = medianFilterShape;
         this.medianFilterSize = medianFilterSize;
     }
 
-    public MedianFilter(Writeable<PlanarImage> output, MedianFilterShape medianFilterShape, int medianFilterSize) throws InvalidParameterException {
+    public MedianFilter(MedianFilterShape medianFilterShape, int medianFilterSize, Writeable<PlanarImage> output) throws InvalidParameterException {
         super(output);
         this.medianFilterShape = medianFilterShape;
         this.medianFilterSize = medianFilterSize;

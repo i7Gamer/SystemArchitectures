@@ -4,10 +4,8 @@ import pmp.filter.DataTransformationFilter2;
 import pmp.interfaces.Readable;
 import pmp.interfaces.Writeable;
 
-import javax.media.jai.JAI;
 import javax.media.jai.KernelJAI;
 import javax.media.jai.PlanarImage;
-import javax.media.jai.RenderedOp;
 import javax.media.jai.operator.DilateDescriptor;
 import javax.media.jai.operator.ErodeDescriptor;
 import java.security.InvalidParameterException;
@@ -17,19 +15,19 @@ public class OpeningFilter extends DataTransformationFilter2<PlanarImage, Planar
     private final float[] kernelMatrix;
     private final int amountOfErodesAndDilates;
 
-    public OpeningFilter(Readable<PlanarImage> input, Writeable<PlanarImage> output, float[] kernelMatrix, int amountOfErodesAndDilates) throws InvalidParameterException {
+    public OpeningFilter(float[] kernelMatrix, int amountOfErodesAndDilates, Readable<PlanarImage> input, Writeable<PlanarImage> output) throws InvalidParameterException {
         super(input, output);
         this.kernelMatrix = kernelMatrix;
         this.amountOfErodesAndDilates = amountOfErodesAndDilates;
     }
 
-    public OpeningFilter(Readable<PlanarImage> input, float[] kernelMatrix, int amountOfErodesAndDilates) throws InvalidParameterException {
+    public OpeningFilter(float[] kernelMatrix, int amountOfErodesAndDilates, Readable<PlanarImage> input) throws InvalidParameterException {
         super(input);
         this.kernelMatrix = kernelMatrix;
         this.amountOfErodesAndDilates = amountOfErodesAndDilates;
     }
 
-    public OpeningFilter(Writeable<PlanarImage> output, float[] kernelMatrix, int amountOfErodesAndDilates) throws InvalidParameterException {
+    public OpeningFilter(float[] kernelMatrix, int amountOfErodesAndDilates, Writeable<PlanarImage> output) throws InvalidParameterException {
         super(output);
         this.kernelMatrix = kernelMatrix;
         this.amountOfErodesAndDilates = amountOfErodesAndDilates;
