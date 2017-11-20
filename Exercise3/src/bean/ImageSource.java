@@ -1,4 +1,4 @@
-package at.fhv.itb.sem5.systemarchitectures.exercise3;
+package bean;
 
 import javax.media.jai.JAI;
 import javax.media.jai.PlanarImage;
@@ -13,7 +13,7 @@ public class ImageSource implements Serializable {
     private Vector<ImageListener> listeners = new Vector<>();
 
     public ImageSource() {
-        this.link = new String("loetstellen.jpg");
+        this.link = "";
     }
 
     public String getLink() {
@@ -23,7 +23,7 @@ public class ImageSource implements Serializable {
     public void setLink(String link) {
         this.link = link;
         try {
-            setImage(Files.exists(Paths.get(link)) ? JAI.create("fileload", link) : null);
+            fireImageEvent(Files.exists(Paths.get(link)) ? JAI.create("fileload", link) : null);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -37,7 +37,7 @@ public class ImageSource implements Serializable {
         this.listeners.removeElement(var1);
     }
 
-    protected synchronized void fireImageEvent(PlanarImage image) {
+    protected void fireImageEvent(PlanarImage image) {
         ImageEvent e = new ImageEvent(this, image);
 
         Vector<ImageListener> copyListeners;
@@ -45,9 +45,5 @@ public class ImageSource implements Serializable {
             copyListeners = new Vector<>(this.listeners);
         }
         copyListeners.forEach(imageListener -> imageListener.imageChanged(e));
-    }
-
-    public void setImage(PlanarImage image) {
-        fireImageEvent(image);
     }
 }

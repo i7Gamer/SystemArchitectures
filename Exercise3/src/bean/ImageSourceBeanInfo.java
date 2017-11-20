@@ -1,4 +1,4 @@
-package at.fhv.itb.sem5.systemarchitectures.exercise3;
+package bean;
 
 import java.beans.EventSetDescriptor;
 import java.beans.MethodDescriptor;
@@ -12,13 +12,22 @@ public class ImageSourceBeanInfo extends SimpleBeanInfo {
 
     public EventSetDescriptor[] getEventSetDescriptors() {
         try {
-            Class imageSourceClass = ImageSource.class;
-            String var3 = "image";
-            Class imageListenerClass = ImageListener.class;
-            String[] events = new String[]{"imageChanged"};
-            String addImageListener = "addImageListener";
-            String removeImageListener = "removeImageListener";
-            EventSetDescriptor descriptor = new EventSetDescriptor(imageSourceClass, var3, imageListenerClass, events, addImageListener, removeImageListener);
+            Class sourceClass = ImageSource.class;
+            String eventSetName = "image";
+            Class listenerType = ImageListener.class;
+            String[] listenerMethodNames = new String[]{"imageChanged"};
+            String addListenerMethodName = "addImageListener";
+            String removeListenerMethodName = "removeImageListener";
+
+            EventSetDescriptor descriptor = new EventSetDescriptor(
+                    sourceClass,
+                    eventSetName,
+                    listenerType,
+                    listenerMethodNames,
+                    addListenerMethodName,
+                    removeListenerMethodName
+            );
+
             return new EventSetDescriptor[]{descriptor};
         } catch (Exception e) {
             e.printStackTrace();

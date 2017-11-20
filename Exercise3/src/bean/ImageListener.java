@@ -1,4 +1,4 @@
-package at.fhv.itb.sem5.systemarchitectures.exercise3;
+package bean;
 
 import java.util.EventListener;
 

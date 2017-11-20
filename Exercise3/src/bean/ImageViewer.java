@@ -1,4 +1,4 @@
-package at.fhv.itb.sem5.systemarchitectures.exercise3;
+package bean;
 
 import javax.media.jai.PlanarImage;
 import java.awt.*;
@@ -6,21 +6,21 @@ import java.io.Serializable;
 
 public class ImageViewer extends Canvas implements ImageListener, Serializable {
 
-    private PlanarImage image;
+    private PlanarImage image = null;
 
     public ImageViewer() {
+        this.setSize(200, 100);
+        this.repaint();
     }
 
     public void paint(Graphics var1) {
 
         if (image != null) {
-            Dimension var2 = this.getSize();
-            int var3 = var2.height;
-            int var4 = var2.width;
-
+            this.setSize(image.getWidth(), image.getHeight());
+            Dimension dimension = this.getSize();
             Image i = image.getAsBufferedImage();
 
-            var1.drawImage(i, 0, 0, var4, var3, null);
+            var1.drawImage(i, 0, 0, dimension.width, dimension.height, null);
         }
     }
 
@@ -30,7 +30,6 @@ public class ImageViewer extends Canvas implements ImageListener, Serializable {
         image = e.getValue();
 
         if (image != null) {
-            this.setSize(image.getWidth(), image.getHeight());
             this.repaint();
         }
     }

@@ -1,15 +1,8 @@
 Manifest-Version: 1.0
 Class-Path: jai_codec.jar jai_core.jar mlibwrapper_jai.jar
 
-
-Name: at/fhv/itb/sem5/systemarchitectures/exercise3/ImageViewer.class
+Name: bean/ImageViewer.class
 Java-Bean: True
 
-Name: at/fhv/itb/sem5/systemarchitectures/exercise3/ImageSource.class
-Java-Bean: True
-
-Name: bean/SourceReader.class
-Java-Bean: True
-
-Name: bean/Display.class
+Name: bean/ImageSource.class
 Java-Bean: True
