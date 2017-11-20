@@ -1,4 +1,4 @@
-package at.fhv.itb.sem5.exercise3;
+package at.fhv.itb.sem5.systemarchitectures.exercise3;
 
 import at.fhv.itb.sem5.lib.pmp.filter.ForwardingFilter;
 import at.fhv.itb.sem5.lib.pmp.interfaces.Readable;
