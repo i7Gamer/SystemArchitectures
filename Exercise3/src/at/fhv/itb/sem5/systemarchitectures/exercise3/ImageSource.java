@@ -9,12 +9,11 @@ import java.util.Vector;
 
 public class ImageSource implements Serializable {
 
-
     private String link;
-    private PlanarImage image;
     private Vector<ImageListener> listeners = new Vector<>();
 
     public ImageSource() {
+        this.link = new String("loetstellen.jpg");
     }
 
     public String getLink() {
@@ -38,9 +37,8 @@ public class ImageSource implements Serializable {
         this.listeners.removeElement(var1);
     }
 
-
-    protected synchronized void fireImageEvent() {
-        ImageEvent e = new ImageEvent(this, this.image);
+    protected synchronized void fireImageEvent(PlanarImage image) {
+        ImageEvent e = new ImageEvent(this, image);
 
         Vector<ImageListener> copyListeners;
         synchronized (this) {
@@ -49,12 +47,7 @@ public class ImageSource implements Serializable {
         copyListeners.forEach(imageListener -> imageListener.imageChanged(e));
     }
 
-    public PlanarImage getImage() {
-        return image;
-    }
-
     public void setImage(PlanarImage image) {
-        this.image = image;
-        fireImageEvent();
+        fireImageEvent(image);
     }
 }

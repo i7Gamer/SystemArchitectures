@@ -1,22 +1,24 @@
 package at.fhv.itb.sem5.systemarchitectures.exercise3;
 
-import java.beans.*;
-import java.lang.reflect.Method;
+import java.beans.EventSetDescriptor;
+import java.beans.MethodDescriptor;
+import java.beans.PropertyDescriptor;
+import java.beans.SimpleBeanInfo;
 
-public class ImageViewerInfo extends SimpleBeanInfo {
+public class ImageSourceBeanInfo extends SimpleBeanInfo {
 
-    public ImageViewerInfo() {
+    public ImageSourceBeanInfo() {
     }
 
     public EventSetDescriptor[] getEventSetDescriptors() {
         try {
-            Class aClass = ImageViewer.class;
+            Class imageSourceClass = ImageSource.class;
             String var3 = "image";
             Class imageListenerClass = ImageListener.class;
             String[] events = new String[]{"imageChanged"};
             String addImageListener = "addImageListener";
             String removeImageListener = "removeImageListener";
-            EventSetDescriptor descriptor = new EventSetDescriptor(aClass, var3, imageListenerClass, events, addImageListener, removeImageListener);
+            EventSetDescriptor descriptor = new EventSetDescriptor(imageSourceClass, var3, imageListenerClass, events, addImageListener, removeImageListener);
             return new EventSetDescriptor[]{descriptor};
         } catch (Exception e) {
             e.printStackTrace();
@@ -26,13 +28,7 @@ public class ImageViewerInfo extends SimpleBeanInfo {
 
     public MethodDescriptor[] getMethodDescriptors() {
         try {
-            Class aClass = ImageViewer.class;
-            Class[] classes = new Class[]{ImageEvent.class};
-            String imageChanged = "imageChanged";
-            Method method = aClass.getMethod(imageChanged, classes);
-            ParameterDescriptor[] parameterDescriptors = new ParameterDescriptor[]{new ParameterDescriptor()};
-            MethodDescriptor methodDescriptor = new MethodDescriptor(method, parameterDescriptors);
-            return new MethodDescriptor[]{methodDescriptor};
+            return new MethodDescriptor[]{};
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -41,7 +37,8 @@ public class ImageViewerInfo extends SimpleBeanInfo {
 
     public PropertyDescriptor[] getPropertyDescriptors() {
         try {
-            return new PropertyDescriptor[]{};
+            PropertyDescriptor propertyDescriptor = new PropertyDescriptor("link", ImageSource.class);
+            return new PropertyDescriptor[]{propertyDescriptor};
         } catch (Exception e) {
             e.printStackTrace();
             return null;
