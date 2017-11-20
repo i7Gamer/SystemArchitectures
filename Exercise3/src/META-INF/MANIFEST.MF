@@ -6,3 +6,6 @@ Java-Bean: True
 
 Name: bean/ImageSource.class
 Java-Bean: True
+
+Name: bean/ROIFilter.class
+Java-Bean: True

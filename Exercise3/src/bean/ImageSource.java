@@ -9,12 +9,8 @@ import java.util.Vector;
 
 public class ImageSource implements Serializable {
 
-    private String link;
+    private String link = "";
     private Vector<ImageListener> listeners = new Vector<>();
-
-    public ImageSource() {
-        this.link = "";
-    }
 
     public String getLink() {
         return link;
