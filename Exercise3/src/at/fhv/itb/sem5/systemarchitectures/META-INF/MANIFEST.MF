@@ -1,7 +1,0 @@
-Manifest-Version: 1.0
-
-Name: exercise3/ImageViewer.class
-Java-Bean: True
-
-Name: exercise3/ImageSource.class
-Java-Bean: True
