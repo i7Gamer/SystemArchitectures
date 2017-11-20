@@ -1,9 +1,9 @@
 package at.fhv.itb.sem5.exercise2;
 
-import calccentroidsfilter.CalcCentroidsFilter;
-import calccentroidsfilter.Coordinate;
-import pmp.interfaces.Readable;
-import pmp.interfaces.Writeable;
+import at.fhv.itb.sem5.lib.calccentroidsfilter.CalcCentroidsFilter;
+import at.fhv.itb.sem5.lib.calccentroidsfilter.Coordinate;
+import at.fhv.itb.sem5.lib.pmp.interfaces.Readable;
+import at.fhv.itb.sem5.lib.pmp.interfaces.Writeable;
 
 import javax.media.jai.PlanarImage;
 import javax.media.jai.operator.MedianFilterDescriptor;

@@ -1,14 +1,10 @@
-package pmp.filter;
+package at.fhv.itb.sem5.lib.pmp.filter;
+
+import at.fhv.itb.sem5.lib.pmp.interfaces.Readable;
+import at.fhv.itb.sem5.lib.pmp.interfaces.Writeable;
 
 import java.io.StreamCorruptedException;
-
 import java.security.InvalidParameterException;
-
-import javax.print.attribute.standard.OutputDeviceAssigned;
-
-import pmp.interfaces.IOable;
-import pmp.interfaces.Readable;
-import pmp.interfaces.Writeable;
 
 /* this filter collects one or more inputs to create one output
  * example: words to a line

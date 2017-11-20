@@ -2,7 +2,7 @@ package at.fhv.itb.sem5.exercise1;
 
 import at.fhv.itb.sem5.exercise1.a.*;
 import at.fhv.itb.sem5.exercise1.b.*;
-import pmp.interfaces.Writeable;
+import at.fhv.itb.sem5.lib.pmp.interfaces.Writeable;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

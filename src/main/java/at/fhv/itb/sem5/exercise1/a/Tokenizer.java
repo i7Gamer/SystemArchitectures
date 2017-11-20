@@ -1,9 +1,9 @@
 package at.fhv.itb.sem5.exercise1.a;
 
+import at.fhv.itb.sem5.lib.pmp.filter.DataTransformationFilter2;
+import at.fhv.itb.sem5.lib.pmp.interfaces.Readable;
+import at.fhv.itb.sem5.lib.pmp.interfaces.Writeable;
 import javafx.util.Pair;
-import pmp.filter.DataTransformationFilter2;
-import pmp.interfaces.Readable;
-import pmp.interfaces.Writeable;
 
 import java.security.InvalidParameterException;
 

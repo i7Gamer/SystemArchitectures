@@ -1,16 +1,13 @@
 package at.fhv.itb.sem5.exercise3;
 
-import pmp.filter.Source;
-
 import javax.media.jai.JAI;
 import javax.media.jai.PlanarImage;
 import java.io.Serializable;
-import java.io.StreamCorruptedException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Vector;
 
-public class ImageSource extends Source<PlanarImage> implements Serializable {
+public class ImageSource implements Serializable {
 
 
     private String link;
@@ -20,12 +17,6 @@ public class ImageSource extends Source<PlanarImage> implements Serializable {
     public ImageSource() {
     }
 
-    @Override
-    public PlanarImage read() throws StreamCorruptedException {
-        setImage(Files.exists(Paths.get(link)) ? JAI.create("fileload", link) : null);
-        return image;
-    }
-
     public String getLink() {
         return link;
     }
@@ -33,8 +24,8 @@ public class ImageSource extends Source<PlanarImage> implements Serializable {
     public void setLink(String link) {
         this.link = link;
         try {
-            read();
-        } catch (StreamCorruptedException e) {
+            setImage(Files.exists(Paths.get(link)) ? JAI.create("fileload", link) : null);
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

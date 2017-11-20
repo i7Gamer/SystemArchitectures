@@ -1,4 +1,4 @@
-package jai;
+package at.fhv.itb.sem5.lib.jai;
 
 import com.sun.media.jai.widget.DisplayJAI;
 

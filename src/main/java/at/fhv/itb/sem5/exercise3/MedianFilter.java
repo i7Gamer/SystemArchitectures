@@ -1,8 +1,8 @@
 package at.fhv.itb.sem5.exercise3;
 
-import pmp.filter.DataTransformationFilter2;
-import pmp.interfaces.Readable;
-import pmp.interfaces.Writeable;
+import at.fhv.itb.sem5.lib.pmp.filter.DataTransformationFilter2;
+import at.fhv.itb.sem5.lib.pmp.interfaces.Readable;
+import at.fhv.itb.sem5.lib.pmp.interfaces.Writeable;
 
 import javax.media.jai.PlanarImage;
 import javax.media.jai.operator.MedianFilterDescriptor;

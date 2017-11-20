@@ -1,13 +1,13 @@
-package calccentroidsfilter;
+package at.fhv.itb.sem5.lib.calccentroidsfilter;
 
 /* this filter expects the bonding discs to be completely white: pixel value of 255 on a scale of 0..255
  * all other pixels in the image are expected to have a pixel value < 255
  * use this filter adapting eventually the package name
  */
 
-import pmp.filter.DataTransformationFilter2;
-import pmp.interfaces.Readable;
-import pmp.interfaces.Writeable;
+import at.fhv.itb.sem5.lib.pmp.filter.DataTransformationFilter2;
+import at.fhv.itb.sem5.lib.pmp.interfaces.Readable;
+import at.fhv.itb.sem5.lib.pmp.interfaces.Writeable;
 
 import javax.media.jai.PlanarImage;
 import java.awt.image.BufferedImage;

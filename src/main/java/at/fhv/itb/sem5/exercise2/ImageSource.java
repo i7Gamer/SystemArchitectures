@@ -1,7 +1,7 @@
 package at.fhv.itb.sem5.exercise2;
 
-import pmp.filter.Source;
-import pmp.interfaces.Writeable;
+import at.fhv.itb.sem5.lib.pmp.filter.Source;
+import at.fhv.itb.sem5.lib.pmp.interfaces.Writeable;
 
 import javax.media.jai.JAI;
 import javax.media.jai.PlanarImage;

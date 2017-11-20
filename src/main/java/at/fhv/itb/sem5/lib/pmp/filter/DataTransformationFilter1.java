@@ -1,11 +1,10 @@
-package pmp.filter;
+package at.fhv.itb.sem5.lib.pmp.filter;
+
+import at.fhv.itb.sem5.lib.pmp.interfaces.Readable;
+import at.fhv.itb.sem5.lib.pmp.interfaces.Writeable;
 
 import java.io.StreamCorruptedException;
 import java.security.InvalidParameterException;
-
-import pmp.interfaces.IOable;
-import pmp.interfaces.Readable;
-import pmp.interfaces.Writeable;
 
 /* this filter changes "in place" the input (without changing neither the type nor the reference) and 
  * sends the modified input as an output

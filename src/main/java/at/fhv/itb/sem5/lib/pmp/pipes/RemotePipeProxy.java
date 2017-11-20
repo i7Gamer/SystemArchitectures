@@ -1,12 +1,10 @@
-package pmp.pipes;
+package at.fhv.itb.sem5.lib.pmp.pipes;
+
+import at.fhv.itb.sem5.lib.pmp.interfaces.IOable;
 
 import java.io.StreamCorruptedException;
-import java.net.MalformedURLException;
 import java.rmi.Naming;
-import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
-
-import pmp.interfaces.IOable;
 
 public class RemotePipeProxy<T> implements IOable<T, T>{
 

@@ -1,6 +1,6 @@
 package at.fhv.itb.sem5.exercise1.b;
 
-import pmp.interfaces.Writeable;
+import at.fhv.itb.sem5.lib.pmp.interfaces.Writeable;
 
 import java.io.StreamCorruptedException;
 import java.security.InvalidParameterException;

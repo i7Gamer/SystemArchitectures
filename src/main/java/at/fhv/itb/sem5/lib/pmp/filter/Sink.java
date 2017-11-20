@@ -1,10 +1,10 @@
-package pmp.filter;
+package at.fhv.itb.sem5.lib.pmp.filter;
+
+import at.fhv.itb.sem5.lib.pmp.interfaces.Readable;
+import at.fhv.itb.sem5.lib.pmp.interfaces.Writeable;
 
 import java.io.StreamCorruptedException;
 import java.security.InvalidParameterException;
-
-import pmp.interfaces.Readable;
-import pmp.interfaces.Writeable;
 
 /*
  * a simple sink: takes passively objects or pulls actively objects without doing anything with the stream objects

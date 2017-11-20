@@ -1,5 +1,5 @@
 
-package calccentroidsfilter;
+package at.fhv.itb.sem5.lib.calccentroidsfilter;
 
 public class Coordinate {
 

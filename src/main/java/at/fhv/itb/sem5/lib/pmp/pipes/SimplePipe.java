@@ -1,11 +1,11 @@
-package pmp.pipes;
+package at.fhv.itb.sem5.lib.pmp.pipes;
+
+import at.fhv.itb.sem5.lib.pmp.interfaces.IOable;
+import at.fhv.itb.sem5.lib.pmp.interfaces.Readable;
+import at.fhv.itb.sem5.lib.pmp.interfaces.Writeable;
 
 import java.io.StreamCorruptedException;
 import java.security.InvalidParameterException;
-
-import pmp.interfaces.IOable;
-import pmp.interfaces.Readable;
-import pmp.interfaces.Writeable;
 
 public class SimplePipe<T> implements IOable<T, T> {
 	

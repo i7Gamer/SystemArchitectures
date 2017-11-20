@@ -1,8 +1,8 @@
 package at.fhv.itb.sem5.exercise3;
 
-import calccentroidsfilter.Coordinate;
-import pmp.filter.Sink;
-import pmp.interfaces.Readable;
+import at.fhv.itb.sem5.lib.calccentroidsfilter.Coordinate;
+import at.fhv.itb.sem5.lib.pmp.filter.Sink;
+import at.fhv.itb.sem5.lib.pmp.interfaces.Readable;
 
 import java.io.BufferedWriter;
 import java.io.File;

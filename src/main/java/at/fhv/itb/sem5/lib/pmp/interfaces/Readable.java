@@ -1,4 +1,4 @@
-package pmp.interfaces;
+package at.fhv.itb.sem5.lib.pmp.interfaces;
 
 import java.io.StreamCorruptedException;
 

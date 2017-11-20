@@ -1,11 +1,11 @@
-package pmp.filter;
+package at.fhv.itb.sem5.lib.pmp.filter;
+
+import at.fhv.itb.sem5.lib.pmp.interfaces.IOable;
+import at.fhv.itb.sem5.lib.pmp.interfaces.Readable;
+import at.fhv.itb.sem5.lib.pmp.interfaces.Writeable;
 
 import java.io.StreamCorruptedException;
 import java.security.InvalidParameterException;
-
-import pmp.interfaces.IOable;
-import pmp.interfaces.Readable;
-import pmp.interfaces.Writeable;
 
 /* This is the most abstract filter class in PmP. Any filter in the pipeline should derive somehow from this
  * class. It is responsible for:

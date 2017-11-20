@@ -1,9 +1,9 @@
-package pmp.pipes;
+package at.fhv.itb.sem5.lib.pmp.pipes;
+
+import at.fhv.itb.sem5.lib.pmp.interfaces.IOable;
 
 import java.io.StreamCorruptedException;
 import java.util.LinkedList;
-
-import pmp.interfaces.IOable;
 
 public class BufferedSyncPipe<T> implements IOable<T, T>{
 

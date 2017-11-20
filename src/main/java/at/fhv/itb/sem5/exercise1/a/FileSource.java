@@ -1,8 +1,8 @@
 package at.fhv.itb.sem5.exercise1.a;
 
+import at.fhv.itb.sem5.lib.pmp.filter.Source;
+import at.fhv.itb.sem5.lib.pmp.interfaces.Writeable;
 import javafx.util.Pair;
-import pmp.filter.Source;
-import pmp.interfaces.Writeable;
 
 import java.io.*;
 import java.security.InvalidParameterException;

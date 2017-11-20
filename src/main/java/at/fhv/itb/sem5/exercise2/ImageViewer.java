@@ -1,9 +1,9 @@
 package at.fhv.itb.sem5.exercise2;
 
+import at.fhv.itb.sem5.lib.pmp.filter.ForwardingFilter;
+import at.fhv.itb.sem5.lib.pmp.interfaces.Readable;
+import at.fhv.itb.sem5.lib.pmp.interfaces.Writeable;
 import com.sun.media.jai.widget.DisplayJAI;
-import pmp.filter.ForwardingFilter;
-import pmp.interfaces.Readable;
-import pmp.interfaces.Writeable;
 
 import javax.media.jai.PlanarImage;
 import javax.swing.*;

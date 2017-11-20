@@ -1,12 +1,11 @@
-package pmp.filter;
+package at.fhv.itb.sem5.lib.pmp.filter;
 
-import java.util.ArrayList;
+import at.fhv.itb.sem5.lib.pmp.interfaces.Readable;
+import at.fhv.itb.sem5.lib.pmp.interfaces.Writeable;
+
 import java.io.StreamCorruptedException;
 import java.security.InvalidParameterException;
-
-import pmp.interfaces.IOable;
-import pmp.interfaces.Readable;
-import pmp.interfaces.Writeable;
+import java.util.ArrayList;
 
 /**
 * same as DataTransformationFilter2, but with the possibility to output several new objects of the same or another type

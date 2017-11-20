@@ -1,4 +1,4 @@
-package pmp.pipes;
+package at.fhv.itb.sem5.lib.pmp.pipes;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;

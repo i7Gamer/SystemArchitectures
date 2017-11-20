@@ -2,8 +2,8 @@ package at.fhv.itb.sem5.exercise1.b;
 
 import at.fhv.itb.sem5.exercise1.a.Alignment;
 import at.fhv.itb.sem5.exercise1.a.Line;
-import pmp.filter.Sink;
-import pmp.interfaces.Readable;
+import at.fhv.itb.sem5.lib.pmp.filter.Sink;
+import at.fhv.itb.sem5.lib.pmp.interfaces.Readable;
 
 import java.io.*;
 import java.security.InvalidParameterException;
