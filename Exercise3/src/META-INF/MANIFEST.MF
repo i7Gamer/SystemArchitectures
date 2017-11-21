@@ -21,3 +21,12 @@ Java-Bean: True
 
 Name: bean/image/Viewer.class
 Java-Bean: True
+
+Name: bean/image/SaveFilter.class
+Java-Bean: True
+
+Name: bean/image/QualityCheckFilter.class
+Java-Bean: True
+
+Name: bean/image/CalcCentroidsFilter.class
+Java-Bean: True
