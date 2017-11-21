@@ -1,11 +1,6 @@
 package bean.image;
 
-import event.image.ImageEvent;
-import event.image.ImageObserver;
-import event.image.ImageSubject;
-
 import javax.media.jai.KernelJAI;
-import javax.media.jai.PlanarImage;
 import javax.media.jai.operator.DilateDescriptor;
 import javax.media.jai.operator.ErodeDescriptor;
 import java.io.Serializable;
@@ -25,23 +20,24 @@ public class ClosingFilter extends ImageSubject implements ImageObserver, Serial
 
     public void setAmountOfClosings(int amountOfClosings) {
         this.amountOfClosings = amountOfClosings;
+        changed(new ImageEvent(this, cache));
     }
 
     @Override
     public void changed(ImageEvent event) {
-        PlanarImage image = event.getValue();
+        cache = event.getValue();
 
         KernelJAI kernel = new KernelJAI(3, 3, kernelMatrix);
 
         for (int i = 0; i < amountOfClosings; i++) {
-            image = DilateDescriptor.create(image, kernel, null);
+            cache = DilateDescriptor.create(cache, kernel, null);
         }
 
         for (int i = 0; i < amountOfClosings; i++) {
-            image = ErodeDescriptor.create(image, kernel, null);
+            cache = ErodeDescriptor.create(cache, kernel, null);
         }
 
-        ImageEvent changed = new ImageEvent(this, image);
+        ImageEvent changed = new ImageEvent(this, cache);
         fireChanged(changed);
     }
 }

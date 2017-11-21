@@ -4,6 +4,9 @@ Class-Path: jai_codec.jar jai_core.jar mlibwrapper_jai.jar
 Name: bean/image/ClosingFilter.class
 Java-Bean: True
 
+Name: bean/image/MedianFilter.class
+Java-Bean: True
+
 Name: bean/image/OpeningFilter.class
 Java-Bean: True
 

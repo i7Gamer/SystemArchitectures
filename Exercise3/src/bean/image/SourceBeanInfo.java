@@ -1,7 +1,5 @@
 package bean.image;
 
-import event.image.ImageObserver;
-
 import java.beans.EventSetDescriptor;
 import java.beans.MethodDescriptor;
 import java.beans.PropertyDescriptor;

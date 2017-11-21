@@ -1,8 +1,5 @@
 package bean.image;
 
-import event.image.ImageEvent;
-import event.image.ImageObserver;
-
 import javax.media.jai.PlanarImage;
 import java.awt.*;
 import java.io.Serializable;

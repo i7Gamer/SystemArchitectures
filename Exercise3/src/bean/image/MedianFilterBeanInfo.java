@@ -3,14 +3,14 @@ package bean.image;
 import java.beans.*;
 import java.lang.reflect.Method;
 
-public class ROIFilterBeanInfo extends SimpleBeanInfo {
+public class MedianFilterBeanInfo extends SimpleBeanInfo {
 
-    public ROIFilterBeanInfo() {
+    public MedianFilterBeanInfo() {
     }
 
     public EventSetDescriptor[] getEventSetDescriptors() {
         try {
-            Class sourceClass = ROIFilter.class;
+            Class sourceClass = MedianFilter.class;
             String eventSetName = "image";
             Class listenerType = ImageObserver.class;
             String listenerMethodNames[] = {"changed"};
@@ -35,7 +35,7 @@ public class ROIFilterBeanInfo extends SimpleBeanInfo {
 
     public MethodDescriptor[] getMethodDescriptors() {
         try {
-            Method method = ROIFilter.class.getMethod("changed", ImageEvent.class);
+            Method method = MedianFilter.class.getMethod("changed", ImageEvent.class);
 
             ParameterDescriptor parameterDescriptors[] = {new ParameterDescriptor()};
             MethodDescriptor methodDescriptor = new MethodDescriptor(method, parameterDescriptors);
@@ -50,10 +50,8 @@ public class ROIFilterBeanInfo extends SimpleBeanInfo {
     public PropertyDescriptor[] getPropertyDescriptors() {
         try {
             return new PropertyDescriptor[]{
-                    new PropertyDescriptor("offsetX", ROIFilter.class),
-                    new PropertyDescriptor("offsetY", ROIFilter.class),
-                    new PropertyDescriptor("width", ROIFilter.class),
-                    new PropertyDescriptor("height", ROIFilter.class)
+                    new PropertyDescriptor("size", MedianFilter.class),
+                    new PropertyDescriptor("shape", MedianFilter.class)
             };
         } catch (Exception e) {
             e.printStackTrace();

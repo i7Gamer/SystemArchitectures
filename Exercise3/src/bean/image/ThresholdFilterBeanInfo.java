@@ -1,8 +1,5 @@
 package bean.image;
 
-import event.image.ImageEvent;
-import event.image.ImageObserver;
-
 import java.beans.*;
 import java.lang.reflect.Method;
 

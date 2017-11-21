@@ -1,4 +1,4 @@
-package event.image;
+package bean.image;
 
 import javax.media.jai.PlanarImage;
 import java.util.EventObject;
