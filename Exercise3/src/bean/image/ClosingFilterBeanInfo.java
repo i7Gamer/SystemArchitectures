@@ -1,21 +1,24 @@
-package bean;
+package bean.image;
+
+import event.image.ImageEvent;
+import event.image.ImageObserver;
 
 import java.beans.*;
 import java.lang.reflect.Method;
 
-public class ROIFilterBeanInfo extends SimpleBeanInfo {
+public class ClosingFilterBeanInfo extends SimpleBeanInfo {
 
-    public ROIFilterBeanInfo() {
+    public ClosingFilterBeanInfo() {
     }
 
     public EventSetDescriptor[] getEventSetDescriptors() {
         try {
-            Class sourceClass = ROIFilter.class;
+            Class sourceClass = ClosingFilter.class;
             String eventSetName = "image";
-            Class listenerType = ImageListener.class;
-            String[] listenerMethodNames = new String[]{"imageChanged"};
-            String addListenerMethodName = "addImageListener";
-            String removeListenerMethodName = "removeImageListener";
+            Class listenerType = ImageObserver.class;
+            String listenerMethodNames[] = {"changed"};
+            String addListenerMethodName = "addListener";
+            String removeListenerMethodName = "removeListener";
 
             EventSetDescriptor descriptor = new EventSetDescriptor(
                     sourceClass,
@@ -35,9 +38,9 @@ public class ROIFilterBeanInfo extends SimpleBeanInfo {
 
     public MethodDescriptor[] getMethodDescriptors() {
         try {
-            Method method = ROIFilter.class.getMethod("imageChanged", ImageEvent.class);
+            Method method = ClosingFilter.class.getMethod("changed", ImageEvent.class);
 
-            ParameterDescriptor[] parameterDescriptors = new ParameterDescriptor[]{new ParameterDescriptor()};
+            ParameterDescriptor parameterDescriptors[] = {new ParameterDescriptor()};
             MethodDescriptor methodDescriptor = new MethodDescriptor(method, parameterDescriptors);
 
             return new MethodDescriptor[]{methodDescriptor};
@@ -50,10 +53,7 @@ public class ROIFilterBeanInfo extends SimpleBeanInfo {
     public PropertyDescriptor[] getPropertyDescriptors() {
         try {
             return new PropertyDescriptor[]{
-                    new PropertyDescriptor("offsetX", ROIFilter.class),
-                    new PropertyDescriptor("offsetY", ROIFilter.class),
-                    new PropertyDescriptor("width", ROIFilter.class),
-                    new PropertyDescriptor("height", ROIFilter.class)
+                    new PropertyDescriptor("amountOfClosings", ClosingFilter.class)
             };
         } catch (Exception e) {
             e.printStackTrace();

@@ -1,11 +1,14 @@
-package bean;
+package bean.image;
+
+import event.image.ImageEvent;
+import event.image.ImageObserver;
+import event.image.ImageSubject;
 
 import javax.media.jai.PlanarImage;
 import java.awt.*;
 import java.io.Serializable;
-import java.util.Vector;
 
-public class ROIFilter implements ImageListener, Serializable {
+public class ROIFilter extends ImageSubject implements ImageObserver, Serializable {
 
     private int offsetX = 0;
     private int offsetY = 40;
@@ -14,15 +17,13 @@ public class ROIFilter implements ImageListener, Serializable {
 
     private PlanarImage input = null;
 
-    private Vector<ImageListener> listeners = new Vector<>();
-
     public int getOffsetX() {
         return offsetX;
     }
 
     public void setOffsetX(int offsetX) {
         this.offsetX = offsetX;
-        imageChanged(new ImageEvent(this, input));
+        changed(new ImageEvent(this, input));
     }
 
     public int getOffsetY() {
@@ -31,7 +32,7 @@ public class ROIFilter implements ImageListener, Serializable {
 
     public void setOffsetY(int offsetY) {
         this.offsetY = offsetY;
-        imageChanged(new ImageEvent(this, input));
+        changed(new ImageEvent(this, input));
     }
 
     public int getWidth() {
@@ -40,7 +41,7 @@ public class ROIFilter implements ImageListener, Serializable {
 
     public void setWidth(int width) {
         this.width = width;
-        imageChanged(new ImageEvent(this, input));
+        changed(new ImageEvent(this, input));
     }
 
     public int getHeight() {
@@ -49,35 +50,18 @@ public class ROIFilter implements ImageListener, Serializable {
 
     public void setHeight(int height) {
         this.height = height;
-        imageChanged(new ImageEvent(this, input));
-    }
-
-    public void addImageListener(ImageListener var1) {
-        this.listeners.addElement(var1);
-    }
-
-    public void removeImageListener(ImageListener var1) {
-        this.listeners.removeElement(var1);
-    }
-
-    protected void fireImageEvent(PlanarImage image) {
-        ImageEvent e = new ImageEvent(this, image);
-
-        Vector<ImageListener> copyListeners;
-        synchronized (this) {
-            copyListeners = new Vector<>(this.listeners);
-        }
-        copyListeners.forEach(imageListener -> imageListener.imageChanged(e));
+        changed(new ImageEvent(this, input));
     }
 
     @Override
-    public void imageChanged(ImageEvent e) {
+    public void changed(ImageEvent event) {
         Rectangle rectangle = new Rectangle(offsetX, offsetY, width, height);
-        input = e.getValue();
+        input = event.getValue();
         PlanarImage planarImage = PlanarImage.wrapRenderedImage(input.getAsBufferedImage(rectangle, input.getColorModel()));
         planarImage.setProperty("offsetX", rectangle.x);
         planarImage.setProperty("offsetY", rectangle.y);
 
-        fireImageEvent(planarImage);
+        ImageEvent newEvent = new ImageEvent(this, planarImage);
+        fireChanged(newEvent);
     }
 }

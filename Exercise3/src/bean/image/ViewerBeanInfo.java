@@ -1,11 +1,13 @@
-package bean;
+package bean.image;
+
+import event.image.ImageEvent;
 
 import java.beans.*;
 import java.lang.reflect.Method;
 
-public class ImageViewerBeanInfo extends SimpleBeanInfo {
+public class ViewerBeanInfo extends SimpleBeanInfo {
 
-    public ImageViewerBeanInfo() {
+    public ViewerBeanInfo() {
     }
 
     public EventSetDescriptor[] getEventSetDescriptors() {
@@ -19,9 +21,9 @@ public class ImageViewerBeanInfo extends SimpleBeanInfo {
 
     public MethodDescriptor[] getMethodDescriptors() {
         try {
-            Method method = ImageViewer.class.getMethod("imageChanged", ImageEvent.class);
+            Method method = Viewer.class.getMethod("changed", ImageEvent.class);
 
-            ParameterDescriptor[] parameterDescriptors = new ParameterDescriptor[]{new ParameterDescriptor()};
+            ParameterDescriptor parameterDescriptors[] = {new ParameterDescriptor()};
             MethodDescriptor methodDescriptor = new MethodDescriptor(method, parameterDescriptors);
 
             return new MethodDescriptor[]{methodDescriptor};

@@ -1,14 +1,17 @@
-package bean;
+package bean.image;
+
+import event.image.ImageEvent;
+import event.image.ImageObserver;
 
 import javax.media.jai.PlanarImage;
 import java.awt.*;
 import java.io.Serializable;
 
-public class ImageViewer extends Canvas implements ImageListener, Serializable {
+public class Viewer extends Canvas implements ImageObserver, Serializable {
 
     private PlanarImage image = null;
 
-    public ImageViewer() {
+    public Viewer() {
         this.setSize(200, 100);
         this.repaint();
     }
@@ -25,9 +28,8 @@ public class ImageViewer extends Canvas implements ImageListener, Serializable {
     }
 
     @Override
-    public void imageChanged(ImageEvent e) {
-
-        image = e.getValue();
+    public void changed(ImageEvent event) {
+        image = event.getValue();
 
         if (image != null) {
             this.repaint();
