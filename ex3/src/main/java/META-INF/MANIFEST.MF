@@ -1,0 +1,32 @@
+Manifest-Version: 1.0
+Class-Path: jai_codec.jar jai_core.jar mlibwrapper_jai.jar
+
+Name: at/fhv/itb/sem5/sa/ClosingFilter.class
+Java-Bean: True
+
+Name: at/fhv/itb/sem5/sa/MedianFilter.class
+Java-Bean: True
+
+Name: at/fhv/itb/sem5/sa/OpeningFilter.class
+Java-Bean: True
+
+Name: at/fhv/itb/sem5/sa/ROIFilter.class
+Java-Bean: True
+
+Name: at/fhv/itb/sem5/sa/Source.class
+Java-Bean: True
+
+Name: at/fhv/itb/sem5/sa/ThresholdFilter.class
+Java-Bean: True
+
+Name: at/fhv/itb/sem5/sa/Viewer.class
+Java-Bean: True
+
+Name: at/fhv/itb/sem5/sa/SaveFilter.class
+Java-Bean: True
+
+Name: at/fhv/itb/sem5/sa/QualityCheckFilter.class
+Java-Bean: True
+
+Name: at/fhv/itb/sem5/sa/CalcCentroidsFilter.class
+Java-Bean: True
