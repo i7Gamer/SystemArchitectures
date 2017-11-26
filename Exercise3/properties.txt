@@ -1,0 +1,35 @@
+CalcCentroidsFilter
+"toleranceX"                Maximal tolerierte Abweichung in X-Richtung
+"toleranceY"                Maximal tolerierte Abweichung in Y-Richtung
+
+ClosingFilter
+"amountOfClosings"          Anzahl Wiederholungen des Closing-Prozesses
+
+MedianFilter
+"size"                      Größe der Shape in px
+"shape"                     angewandte Form
+
+OpeningFilter
+"amountOfOpenings"          Anzahl Wiederholungen des Opening-Prozesses
+
+QualityCheckFilter
+"savePath"                  Pfad, unter welchem die Datei abgelegt wird
+"toleranceX"                Maximal tolerierte Abweichung in X-Richtung
+"toleranceY"                Maximal tolerierte Abweichung in Y-Richtung
+
+ROIFilter
+"offsetX"                   Verschiebung des Ausgangspunkts in X-Richtung
+"offsetY"                   Verschiebung des Ausgangspunkts in Y-Richtung
+"width"                     Breite der ROI in px
+"height"                    Höhe der ROI in px
+
+SaveFilter
+"savePath"                  Pfad, unter welchem die Datei abgelegt wird
+
+Source
+"link"                      Name der Quelldatei
+
+ThresholdFilter
+ "low"                      untere Grenze des betroffenen Spektrums
+"high"                      obere Grenze des betroffenen Spektrums
+"constant"                  Konstante, wodurch betroffene Werte ersetzt werden
